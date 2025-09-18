@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Create Lead",
+    "method": "POST",
+    "url": "https://dev-api.filings.cloud/lead",
+    "headers": {
+      "x-api-key": "qEcQnbcKTS7OyNnwMwEPW9CegyIQJ9ZX2kLFJ6w0"
+    },
+    "body": {
+      "name": "Agent teena",
+      "email": "teena@agent.com",
+      "mobile": "9876543210"
+    },
+    "business_rules": [
+      "email must be in valid format",
+      "mobile must be exactly 10 digits",
+      "name must not be empty"
+    ],
+    "extract_id": "customer_id",
+    "chain_to": "Get Lead"
+  },
+  {
+    "name": "Get Lead",
+    "method": "GET",
+    "url": "https://dev-api.filings.cloud/customer?customer_id={customer_id}",
+    "headers": {
+      "x-api-key": "qEcQnbcKTS7OyNnwMwEPW9CegyIQJ9ZX2kLFJ6w0"
+    },
+    "business_rules": [
+      "response must include name",
+      "response must include email",
+      "status must be 200"
+    ]
+  }
+]
