@@ -7,9 +7,14 @@
       "x-api-key": "qEcQnbcKTS7OyNnwMwEPW9CegyIQJ9ZX2kLFJ6w0"
     },
     "body": {
-      "name": "Agent teena",
-      "email": "teena@agent.com",
-      "mobile": "9876543210"
+       "name": "Test Agent",
+    "email": "Agent@gmail.cloud",
+    "mobile": "7305833329",
+    "country_code": "91",
+    "lead_source": "Agent-Lead",
+    "country": "India",
+    "catalog_id": 140,
+    "url": "https://dev.indiafilings.com/Agent"
     },
     "business_rules": [
       "email must be in valid format",

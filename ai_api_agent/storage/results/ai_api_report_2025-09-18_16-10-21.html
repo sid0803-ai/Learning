@@ -1,0 +1,73 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>AI API Agent Report - 2025-09-18_16-10-21</title>
+  <style>
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding:20px; background:#f7f9fb}
+    h1{color:#111;}
+    table{border-collapse:collapse; width:100%; margin-top:12px;}
+    th,td{border:1px solid #ddd; padding:8px; text-align:left;}
+    th{background:#0b5fff; color:#fff;}
+    tr.pass td{background:#e6ffed}
+    tr.fail td{background:#ffe6e6}
+    pre{background:#fff; padding:8px; border:1px solid #eee; overflow:auto}
+    .meta{margin-top:8px; color:#555}
+  </style>
+</head>
+<body>
+  <h1>AI API Agent Report</h1>
+  <div class="meta">Run Timestamp: 2025-09-18_16-10-21 &nbsp;|&nbsp; Agent: APIAgent</div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th><th>Endpoint</th><th>Method</th><th>URL</th><th>Status</th><th>Result</th><th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+<tr class="pass">
+  <td>1</td>
+  <td>Create Lead</td>
+  <td>POST</td>
+  <td><a href="https://dev-api.filings.cloud/lead" target="_blank">https://dev-api.filings.cloud/lead</a></td>
+  <td>200</td>
+  <td>PASS</td>
+  <td><pre>{&#x27;request_body&#x27;: {&#x27;name&#x27;: &#x27;Test Agent&#x27;, &#x27;email&#x27;: &#x27;Agent@gmail.cloud&#x27;, &#x27;mobile&#x27;: &#x27;7305833329&#x27;, &#x27;country_code&#x27;: &#x27;91&#x27;, &#x27;lead_source&#x27;: &#x27;Agent-Lead&#x27;, &#x27;country&#x27;: &#x27;India&#x27;, &#x27;catalog_id&#x27;: 140, &#x27;url&#x27;: &#x27;https://dev.indiafilings.com/Agent&#x27;}, &#x27;response_status&#x27;: 200, &#x27;response_body&#x27;: {&#x27;status&#x27;: 200, &#x27;message&#x27;: &#x27;Customer and call request created&#x27;, &#x27;customer_id&#x27;: 1758192235013, &#x27;call_request_id&#x27;: 5068383, &#x27;otp&#x27;: &#x27;required&#x27;, &#x27;new_signup&#x27;: &#x27;yes&#x27;, &#x27;uid&#x27;: &#x27;4444344&#x27;}, &#x27;validation_errors&#x27;: [], &#x27;chain_context&#x27;: {&#x27;customer_id&#x27;: 1758192235013}}</pre></td>
+</tr>
+
+<tr class="fail">
+  <td>2</td>
+  <td>Get Lead</td>
+  <td>GET</td>
+  <td><a href="https://dev-api.filings.cloud/customer?customer_id=1758192235013" target="_blank">https://dev-api.filings.cloud/customer?customer_id=1758192235013</a></td>
+  <td>200</td>
+  <td>FAIL</td>
+  <td><pre>{&#x27;request_body&#x27;: None, &#x27;response_status&#x27;: 200, &#x27;response_body&#x27;: {&#x27;status&#x27;: 200, &#x27;data&#x27;: {&#x27;customer_id&#x27;: 1758192235013, &#x27;uid&#x27;: 4444344, &#x27;email&#x27;: &#x27;agent@gmail.cloud&#x27;, &#x27;name&#x27;: &#x27;Test Agent&#x27;, &#x27;primary_contact&#x27;: &#x27;91-7305833329&#x27;, &#x27;country&#x27;: &#x27;&#x27;, &#x27;city&#x27;: &#x27;&#x27;, &#x27;state&#x27;: &#x27;&#x27;, &#x27;pincode&#x27;: 0, &#x27;latitude&#x27;: 0, &#x27;longitude&#x27;: 0, &#x27;region&#x27;: &#x27;&#x27;, &#x27;created_on&#x27;: &#x27;2025-09-18 16:13:55&#x27;, &#x27;june_status&#x27;: 0, &#x27;otp_verification&#x27;: &#x27;not verified&#x27;, &#x27;payment_status&#x27;: &#x27;new&#x27;, &#x27;june_stage&#x27;: 0, &#x27;ledgers_last_login&#x27;: &#x27;Never Logged In&#x27;, &#x27;active_potentials&#x27;: [{&#x27;role&#x27;: None, &#x27;region&#x27;: None, &#x27;source&#x27;: &#x27;Agent-Lead&#x27;, &#x27;status&#x27;: &#x27;Not Contacted - Rapid Response Required&#x27;, &#x27;advisor&#x27;: &#x27;Unassigned&#x27;, &#x27;country&#x27;: None, &#x27;role_id&#x27;: None, &#x27;service&#x27;: &#x27;Registered Office Change - Company&#x27;, &#x27;advisor_id&#x27;: 158, &#x27;catalog_id&#x27;: 140, &#x27;service_id&#x27;: 25, &#x27;advisor_gid&#x27;: 118383458, &#x27;profile_url&#x27;: &#x27;&#x27;, &#x27;customer_bid&#x27;: 0, &#x27;potential_id&#x27;: 5068383, &#x27;next_followup&#x27;: &#x27;2025-09-18&#x27;, &#x27;advisor_status&#x27;: 1, &#x27;service_platform&#x27;: 1}], &#x27;converted_potentials&#x27;: [], &#x27;detached_primary_contact&#x27;: {&#x27;mobile&#x27;: 7305833329, &#x27;country_code&#x27;: 91}, &#x27;spoc_info&#x27;: [], &#x27;linked_accounts&#x27;: [], &#x27;tags&#x27;: [], &#x27;tag_ids&#x27;: [], &#x27;gstin_info&#x27;: []}}, &#x27;validation_errors&#x27;: [&#x27;Response missing: name&#x27;, &#x27;Response missing: email&#x27;], &#x27;chain_context&#x27;: {}}</pre></td>
+</tr>
+
+<tr class="fail">
+  <td>3</td>
+  <td>Get Lead</td>
+  <td>GET</td>
+  <td><a href="https://dev-api.filings.cloud/customer?customer_id=1758192235013" target="_blank">https://dev-api.filings.cloud/customer?customer_id=1758192235013</a></td>
+  <td>200</td>
+  <td>FAIL</td>
+  <td><pre>{&#x27;request_body&#x27;: None, &#x27;response_status&#x27;: 200, &#x27;response_body&#x27;: {&#x27;status&#x27;: 200, &#x27;data&#x27;: {&#x27;customer_id&#x27;: 1758192235013, &#x27;uid&#x27;: 4444344, &#x27;email&#x27;: &#x27;agent@gmail.cloud&#x27;, &#x27;name&#x27;: &#x27;Test Agent&#x27;, &#x27;primary_contact&#x27;: &#x27;91-7305833329&#x27;, &#x27;country&#x27;: &#x27;&#x27;, &#x27;city&#x27;: &#x27;&#x27;, &#x27;state&#x27;: &#x27;&#x27;, &#x27;pincode&#x27;: 0, &#x27;latitude&#x27;: 0, &#x27;longitude&#x27;: 0, &#x27;region&#x27;: &#x27;&#x27;, &#x27;created_on&#x27;: &#x27;2025-09-18 16:13:55&#x27;, &#x27;june_status&#x27;: 0, &#x27;otp_verification&#x27;: &#x27;not verified&#x27;, &#x27;payment_status&#x27;: &#x27;new&#x27;, &#x27;june_stage&#x27;: 0, &#x27;ledgers_last_login&#x27;: &#x27;Never Logged In&#x27;, &#x27;active_potentials&#x27;: [{&#x27;role&#x27;: None, &#x27;region&#x27;: None, &#x27;source&#x27;: &#x27;Agent-Lead&#x27;, &#x27;status&#x27;: &#x27;Not Contacted - Rapid Response Required&#x27;, &#x27;advisor&#x27;: &#x27;Unassigned&#x27;, &#x27;country&#x27;: None, &#x27;role_id&#x27;: None, &#x27;service&#x27;: &#x27;Registered Office Change - Company&#x27;, &#x27;advisor_id&#x27;: 158, &#x27;catalog_id&#x27;: 140, &#x27;service_id&#x27;: 25, &#x27;advisor_gid&#x27;: 118383458, &#x27;profile_url&#x27;: &#x27;&#x27;, &#x27;customer_bid&#x27;: 0, &#x27;potential_id&#x27;: 5068383, &#x27;next_followup&#x27;: &#x27;2025-09-18&#x27;, &#x27;advisor_status&#x27;: 1, &#x27;service_platform&#x27;: 1}], &#x27;converted_potentials&#x27;: [], &#x27;detached_primary_contact&#x27;: {&#x27;mobile&#x27;: 7305833329, &#x27;country_code&#x27;: 91}, &#x27;spoc_info&#x27;: [], &#x27;linked_accounts&#x27;: [], &#x27;tags&#x27;: [], &#x27;tag_ids&#x27;: [], &#x27;gstin_info&#x27;: []}}, &#x27;validation_errors&#x27;: [&#x27;Response missing: name&#x27;, &#x27;Response missing: email&#x27;], &#x27;chain_context&#x27;: {}}</pre></td>
+</tr>
+
+    </tbody>
+  </table>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>Total endpoints: 3</li>
+    <li>Passed: 1</li>
+    <li>Failed: 2</li>
+  </ul>
+
+  <h2>Raw Data (JSON-ish)</h2>
+  <pre>[{&#x27;name&#x27;: &#x27;Create Lead&#x27;, &#x27;method&#x27;: &#x27;POST&#x27;, &#x27;url&#x27;: &#x27;https://dev-api.filings.cloud/lead&#x27;, &#x27;request_body&#x27;: {&#x27;name&#x27;: &#x27;Test Agent&#x27;, &#x27;email&#x27;: &#x27;Agent@gmail.cloud&#x27;, &#x27;mobile&#x27;: &#x27;7305833329&#x27;, &#x27;country_code&#x27;: &#x27;91&#x27;, &#x27;lead_source&#x27;: &#x27;Agent-Lead&#x27;, &#x27;country&#x27;: &#x27;India&#x27;, &#x27;catalog_id&#x27;: 140, &#x27;url&#x27;: &#x27;https://dev.indiafilings.com/Agent&#x27;}, &#x27;response_status&#x27;: 200, &#x27;response_body&#x27;: {&#x27;status&#x27;: 200, &#x27;message&#x27;: &#x27;Customer and call request created&#x27;, &#x27;customer_id&#x27;: 1758192235013, &#x27;call_request_id&#x27;: 5068383, &#x27;otp&#x27;: &#x27;required&#x27;, &#x27;new_signup&#x27;: &#x27;yes&#x27;, &#x27;uid&#x27;: &#x27;4444344&#x27;}, &#x27;validation_errors&#x27;: [], &#x27;chain_context&#x27;: {&#x27;customer_id&#x27;: 1758192235013}, &#x27;ok&#x27;: True}, {&#x27;name&#x27;: &#x27;Get Lead&#x27;, &#x27;method&#x27;: &#x27;GET&#x27;, &#x27;url&#x27;: &#x27;https://dev-api.filings.cloud/customer?customer_id=1758192235013&#x27;, &#x27;request_body&#x27;: None, &#x27;response_status&#x27;: 200, &#x27;response_body&#x27;: {&#x27;status&#x27;: 200, &#x27;data&#x27;: {&#x27;customer_id&#x27;: 1758192235013, &#x27;uid&#x27;: 4444344, &#x27;email&#x27;: &#x27;agent@gmail.cloud&#x27;, &#x27;name&#x27;: &#x27;Test Agent&#x27;, &#x27;primary_contact&#x27;: &#x27;91-7305833329&#x27;, &#x27;country&#x27;: &#x27;&#x27;, &#x27;city&#x27;: &#x27;&#x27;, &#x27;state&#x27;: &#x27;&#x27;, &#x27;pincode&#x27;: 0, &#x27;latitude&#x27;: 0, &#x27;longitude&#x27;: 0, &#x27;region&#x27;: &#x27;&#x27;, &#x27;created_on&#x27;: &#x27;2025-09-18 16:13:55&#x27;, &#x27;june_status&#x27;: 0, &#x27;otp_verification&#x27;: &#x27;not verified&#x27;, &#x27;payment_status&#x27;: &#x27;new&#x27;, &#x27;june_stage&#x27;: 0, &#x27;ledgers_last_login&#x27;: &#x27;Never Logged In&#x27;, &#x27;active_potentials&#x27;: [{&#x27;role&#x27;: None, &#x27;region&#x27;: None, &#x27;source&#x27;: &#x27;Agent-Lead&#x27;, &#x27;status&#x27;: &#x27;Not Contacted - Rapid Response Required&#x27;, &#x27;advisor&#x27;: &#x27;Unassigned&#x27;, &#x27;country&#x27;: None, &#x27;role_id&#x27;: None, &#x27;service&#x27;: &#x27;Registered Office Change - Company&#x27;, &#x27;advisor_id&#x27;: 158, &#x27;catalog_id&#x27;: 140, &#x27;service_id&#x27;: 25, &#x27;advisor_gid&#x27;: 118383458, &#x27;profile_url&#x27;: &#x27;&#x27;, &#x27;customer_bid&#x27;: 0, &#x27;potential_id&#x27;: 5068383, &#x27;next_followup&#x27;: &#x27;2025-09-18&#x27;, &#x27;advisor_status&#x27;: 1, &#x27;service_platform&#x27;: 1}], &#x27;converted_potentials&#x27;: [], &#x27;detached_primary_contact&#x27;: {&#x27;mobile&#x27;: 7305833329, &#x27;country_code&#x27;: 91}, &#x27;spoc_info&#x27;: [], &#x27;linked_accounts&#x27;: [], &#x27;tags&#x27;: [], &#x27;tag_ids&#x27;: [], &#x27;gstin_info&#x27;: []}}, &#x27;validation_errors&#x27;: [&#x27;Response missing: name&#x27;, &#x27;Response missing: email&#x27;], &#x27;chain_context&#x27;: {}, &#x27;ok&#x27;: False}, {&#x27;name&#x27;: &#x27;Get Lead&#x27;, &#x27;method&#x27;: &#x27;GET&#x27;, &#x27;url&#x27;: &#x27;https://dev-api.filings.cloud/customer?customer_id=1758192235013&#x27;, &#x27;request_body&#x27;: None, &#x27;response_status&#x27;: 200, &#x27;response_body&#x27;: {&#x27;status&#x27;: 200, &#x27;data&#x27;: {&#x27;customer_id&#x27;: 1758192235013, &#x27;uid&#x27;: 4444344, &#x27;email&#x27;: &#x27;agent@gmail.cloud&#x27;, &#x27;name&#x27;: &#x27;Test Agent&#x27;, &#x27;primary_contact&#x27;: &#x27;91-7305833329&#x27;, &#x27;country&#x27;: &#x27;&#x27;, &#x27;city&#x27;: &#x27;&#x27;, &#x27;state&#x27;: &#x27;&#x27;, &#x27;pincode&#x27;: 0, &#x27;latitude&#x27;: 0, &#x27;longitude&#x27;: 0, &#x27;region&#x27;: &#x27;&#x27;, &#x27;created_on&#x27;: &#x27;2025-09-18 16:13:55&#x27;, &#x27;june_status&#x27;: 0, &#x27;otp_verification&#x27;: &#x27;not verified&#x27;, &#x27;payment_status&#x27;: &#x27;new&#x27;, &#x27;june_stage&#x27;: 0, &#x27;ledgers_last_login&#x27;: &#x27;Never Logged In&#x27;, &#x27;active_potentials&#x27;: [{&#x27;role&#x27;: None, &#x27;region&#x27;: None, &#x27;source&#x27;: &#x27;Agent-Lead&#x27;, &#x27;status&#x27;: &#x27;Not Contacted - Rapid Response Required&#x27;, &#x27;advisor&#x27;: &#x27;Unassigned&#x27;, &#x27;country&#x27;: None, &#x27;role_id&#x27;: None, &#x27;service&#x27;: &#x27;Registered Office Change - Company&#x27;, &#x27;advisor_id&#x27;: 158, &#x27;catalog_id&#x27;: 140, &#x27;service_id&#x27;: 25, &#x27;advisor_gid&#x27;: 118383458, &#x27;profile_url&#x27;: &#x27;&#x27;, &#x27;customer_bid&#x27;: 0, &#x27;potential_id&#x27;: 5068383, &#x27;next_followup&#x27;: &#x27;2025-09-18&#x27;, &#x27;advisor_status&#x27;: 1, &#x27;service_platform&#x27;: 1}], &#x27;converted_potentials&#x27;: [], &#x27;detached_primary_contact&#x27;: {&#x27;mobile&#x27;: 7305833329, &#x27;country_code&#x27;: 91}, &#x27;spoc_info&#x27;: [], &#x27;linked_accounts&#x27;: [], &#x27;tags&#x27;: [], &#x27;tag_ids&#x27;: [], &#x27;gstin_info&#x27;: []}}, &#x27;validation_errors&#x27;: [&#x27;Response missing: name&#x27;, &#x27;Response missing: email&#x27;], &#x27;chain_context&#x27;: {}, &#x27;ok&#x27;: False}]</pre>
+</body>
+</html>
