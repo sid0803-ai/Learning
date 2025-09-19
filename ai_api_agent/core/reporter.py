@@ -1,9 +1,5 @@
 import os
-import datetime
-import html
-from typing import List, Dict, Any
-
-REPORT_DIR = "storage/results"
+from datetime import datetime
 
 HTML_TEMPLATE = """
 <!doctype html>
@@ -12,15 +8,68 @@ HTML_TEMPLATE = """
   <meta charset="utf-8"/>
   <title>AI API Agent Report - {ts}</title>
   <style>
-    body{{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; padding:20px; background:#f7f9fb}}
-    h1{{color:#111;}}
-    table{{border-collapse:collapse; width:100%; margin-top:12px;}}
-    th,td{{border:1px solid #ddd; padding:8px; text-align:left;}}
-    th{{background:#0b5fff; color:#fff;}}
-    tr.pass td{{background:#e6ffed}}
-    tr.fail td{{background:#ffe6e6}}
-    pre{{background:#fff; padding:8px; border:1px solid #eee; overflow:auto}}
-    .meta{{margin-top:8px; color:#555}}
+    body {{
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      padding: 20px;
+      background: #f7f9fb;
+      color: #222;
+    }}
+    h1 {{ color: #111; margin-bottom: 0; }}
+    .meta {{ margin-top: 4px; color: #555; font-size: 14px; }}
+    table {{
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }}
+    th, td {{
+      border: 1px solid #eee;
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+    }}
+    th {{
+      background: #0b5fff;
+      color: #fff;
+    }}
+    tr.pass td {{ background: #e6ffed; }}
+    tr.fail td {{ background: #ffe6e6; }}
+    pre {{
+      background: #fff;
+      padding: 8px;
+      border: 1px solid #eee;
+      overflow-x: auto;
+      font-size: 13px;
+      white-space: pre-wrap;
+    }}
+    .badge-pass {{
+      background: #28a745;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }}
+    .badge-fail {{
+      background: #dc3545;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }}
+    .reason {{
+      margin-top: 6px;
+      color: #b71c1c;
+      font-size: 13px;
+      font-weight: 500;
+    }}
+    ul.summary {{
+      margin-top: 12px;
+      line-height: 1.6;
+    }}
   </style>
 </head>
 <body>
@@ -29,7 +78,13 @@ HTML_TEMPLATE = """
   <table>
     <thead>
       <tr>
-        <th>#</th><th>Endpoint</th><th>Method</th><th>URL</th><th>Status</th><th>Result</th><th>Details</th>
+        <th>#</th>
+        <th>Endpoint</th>
+        <th>Method</th>
+        <th>URL</th>
+        <th>Status</th>
+        <th>Result</th>
+        <th>Details</th>
       </tr>
     </thead>
     <tbody>
@@ -38,13 +93,13 @@ HTML_TEMPLATE = """
   </table>
 
   <h2>Summary</h2>
-  <ul>
+  <ul class="summary">
     <li>Total endpoints: {total}</li>
-    <li>Passed: {passed}</li>
-    <li>Failed: {failed}</li>
+    <li>✅ Passed: {passed}</li>
+    <li>❌ Failed: {failed}</li>
   </ul>
 
-  <h2>Raw Data (JSON-ish)</h2>
+  <h2>Raw Data</h2>
   <pre>{raw}</pre>
 </body>
 </html>
@@ -57,64 +112,69 @@ ROW_TEMPLATE = """
   <td>{method}</td>
   <td><a href="{url}" target="_blank">{url_short}</a></td>
   <td>{status}</td>
-  <td>{result}</td>
-  <td><pre>{details}</pre></td>
+  <td>{badge}</td>
+  <td>
+    <pre>{details}</pre>
+    {reason_block}
+  </td>
 </tr>
 """
 
-def safe_str(x):
-    try:
-        return html.escape(str(x))
-    except:
-        return ""
 
-def make_report(run_results: List[Dict[str, Any]], agent_name="APIAgent") -> str:
-    os.makedirs(REPORT_DIR, exist_ok=True)
-    ts = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+def make_report(run_results, agent_name="APIAgent", output_dir="reports"):
+    """
+    Generate an HTML report for API Agent test results.
+    """
+    os.makedirs(output_dir, exist_ok=True)
+
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
     rows_html = ""
-    passed = 0
-    failed = 0
-    for i, r in enumerate(run_results, start=1):
-        ok = r.get("ok", False)
-        row_class = "pass" if ok else "fail"
-        if ok: passed += 1
-        else: failed += 1
+    passed, failed = 0, 0
 
-        details = {
-            "request_body": r.get("request_body"),
-            "response_status": r.get("response_status"),
-            "response_body": r.get("response_body"),
-            "validation_errors": r.get("validation_errors"),
-            "chain_context": r.get("chain_context"),
-            # placeholder for AI notes (commented integration)
-            # "ai_notes": r.get("ai_notes")
-        }
+    for idx, result in enumerate(run_results, start=1):
+        success = result.get("success", False)
+
+        if success:
+            row_class = "pass"
+            badge = '<span class="badge-pass">PASS</span>'
+            reason_block = ""
+            passed += 1
+        else:
+            row_class = "fail"
+            badge = '<span class="badge-fail">FAIL</span>'
+            failure_reason = result.get("reason", "Unknown error")
+            reason_block = f'<div class="reason">Reason: {failure_reason}</div>'
+            failed += 1
 
         rows_html += ROW_TEMPLATE.format(
+            idx=idx,
+            name=result.get("name", "Unnamed"),
+            method=result.get("method", "GET"),
+            url=result.get("url", "#"),
+            url_short=result.get("url", "#").replace("https://", "").replace("http://", ""),
+            status=result.get("status", "N/A"),
+            details=result.get("details", ""),
             row_class=row_class,
-            idx=i,
-            name=safe_str(r.get("name")),
-            method=safe_str(r.get("method")),
-            url=safe_str(r.get("url")),
-            url_short=safe_str((r.get("url")[:80] + "...") if len(r.get("url",""))>85 else r.get("url")),
-            status=safe_str(r.get("response_status")),
-            result="PASS" if ok else "FAIL",
-            details=safe_str(details)
+            badge=badge,
+            reason_block=reason_block
         )
 
-    raw = html.escape(str(run_results))
+    total = passed + failed
+
     html_content = HTML_TEMPLATE.format(
         ts=ts,
         agent_name=agent_name,
         rows=rows_html,
-        total=len(run_results),
+        total=total,
         passed=passed,
         failed=failed,
-        raw=raw
+        raw=run_results
     )
 
-    filename = os.path.join(REPORT_DIR, f"ai_api_report_{ts}.html")
-    with open(filename, "w", encoding="utf-8") as f:
+    report_path = os.path.join(output_dir, f"report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.html")
+
+    with open(report_path, "w", encoding="utf-8") as f:
         f.write(html_content)
 
-    return filename
+    return report_path

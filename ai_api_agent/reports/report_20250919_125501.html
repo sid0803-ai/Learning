@@ -1,0 +1,141 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>AI API Agent Report - 2025-09-19 12:55:01</title>
+  <style>
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      padding: 20px;
+      background: #f7f9fb;
+      color: #222;
+    }
+    h1 { color: #111; margin-bottom: 0; }
+    .meta { margin-top: 4px; color: #555; font-size: 14px; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    th, td {
+      border: 1px solid #eee;
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background: #0b5fff;
+      color: #fff;
+    }
+    tr.pass td { background: #e6ffed; }
+    tr.fail td { background: #ffe6e6; }
+    pre {
+      background: #fff;
+      padding: 8px;
+      border: 1px solid #eee;
+      overflow-x: auto;
+      font-size: 13px;
+      white-space: pre-wrap;
+    }
+    .badge-pass {
+      background: #28a745;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-fail {
+      background: #dc3545;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .reason {
+      margin-top: 6px;
+      color: #b71c1c;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    ul.summary {
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <h1>AI API Agent Report</h1>
+  <div class="meta">Run Timestamp: 2025-09-19 12:55:01 &nbsp;|&nbsp; Agent: APIAgent</div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Endpoint</th>
+        <th>Method</th>
+        <th>URL</th>
+        <th>Status</th>
+        <th>Result</th>
+        <th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+<tr class="fail">
+  <td>1</td>
+  <td>Create Lead</td>
+  <td>POST</td>
+  <td><a href="https://dev-api.filings.cloud/lead" target="_blank">dev-api.filings.cloud/lead</a></td>
+  <td>N/A</td>
+  <td><span class="badge-fail">FAIL</span></td>
+  <td>
+    <pre></pre>
+    <div class="reason">Reason: Unknown error</div>
+  </td>
+</tr>
+
+<tr class="fail">
+  <td>2</td>
+  <td>Get Lead</td>
+  <td>GET</td>
+  <td><a href="https://dev-api.filings.cloud/customer?customer_id=1758192235013" target="_blank">dev-api.filings.cloud/customer?customer_id=1758192235013</a></td>
+  <td>N/A</td>
+  <td><span class="badge-fail">FAIL</span></td>
+  <td>
+    <pre></pre>
+    <div class="reason">Reason: Unknown error</div>
+  </td>
+</tr>
+
+<tr class="fail">
+  <td>3</td>
+  <td>Get Lead</td>
+  <td>GET</td>
+  <td><a href="https://dev-api.filings.cloud/customer?customer_id=1758192235013" target="_blank">dev-api.filings.cloud/customer?customer_id=1758192235013</a></td>
+  <td>N/A</td>
+  <td><span class="badge-fail">FAIL</span></td>
+  <td>
+    <pre></pre>
+    <div class="reason">Reason: Unknown error</div>
+  </td>
+</tr>
+
+    </tbody>
+  </table>
+
+  <h2>Summary</h2>
+  <ul class="summary">
+    <li>Total endpoints: 3</li>
+    <li>✅ Passed: 0</li>
+    <li>❌ Failed: 3</li>
+  </ul>
+
+  <h2>Raw Data</h2>
+  <pre>[{'name': 'Create Lead', 'method': 'POST', 'url': 'https://dev-api.filings.cloud/lead', 'request_body': {'name': 'Test Agent', 'email': 'Agent@gmail.cloud', 'mobile': '7305833329', 'country_code': '91', 'lead_source': 'Agent-Lead', 'country': 'India', 'catalog_id': 140, 'url': 'https://dev.indiafilings.com/Agent'}, 'response_status': 200, 'response_body': {'status': 200, 'message': 'Customer and call request already exists and it has updated.', 'customer_id': 1758192235013, 'call_request_id': 5068383, 'otp': 'required', 'new_signup': 'no', 'uid': 4444344}, 'validation_errors': [], 'chain_context': {'customer_id': 1758192235013}, 'ok': True}, {'name': 'Get Lead', 'method': 'GET', 'url': 'https://dev-api.filings.cloud/customer?customer_id=1758192235013', 'request_body': None, 'response_status': 200, 'response_body': {'status': 200, 'data': {'customer_id': 1758192235013, 'uid': 4444344, 'email': 'agent@gmail.cloud', 'name': 'Test Agent', 'primary_contact': '91-7305833329', 'country': '', 'city': '', 'state': '', 'pincode': 0, 'latitude': 0, 'longitude': 0, 'region': '', 'created_on': '2025-09-18 16:13:55', 'june_status': 0, 'otp_verification': 'not verified', 'payment_status': 'new', 'june_stage': 0, 'ledgers_last_login': 'Never Logged In', 'active_potentials': [{'role': None, 'region': None, 'source': 'Agent-Lead', 'status': 'Not Contacted - Rapid Response Required', 'advisor': 'Unassigned', 'country': None, 'role_id': None, 'service': 'Registered Office Change - Company', 'advisor_id': 158, 'catalog_id': 140, 'service_id': 25, 'advisor_gid': 118383458, 'profile_url': '', 'customer_bid': 0, 'potential_id': 5068383, 'next_followup': '2025-09-19', 'advisor_status': 1, 'service_platform': 1}], 'converted_potentials': [], 'detached_primary_contact': {'mobile': 7305833329, 'country_code': 91}, 'spoc_info': [], 'linked_accounts': [], 'tags': [], 'tag_ids': [], 'gstin_info': []}}, 'validation_errors': ['Response missing: name', 'Response missing: email'], 'chain_context': {}, 'ok': False}, {'name': 'Get Lead', 'method': 'GET', 'url': 'https://dev-api.filings.cloud/customer?customer_id=1758192235013', 'request_body': None, 'response_status': 200, 'response_body': {'status': 200, 'data': {'customer_id': 1758192235013, 'uid': 4444344, 'email': 'agent@gmail.cloud', 'name': 'Test Agent', 'primary_contact': '91-7305833329', 'country': '', 'city': '', 'state': '', 'pincode': 0, 'latitude': 0, 'longitude': 0, 'region': '', 'created_on': '2025-09-18 16:13:55', 'june_status': 0, 'otp_verification': 'not verified', 'payment_status': 'new', 'june_stage': 0, 'ledgers_last_login': 'Never Logged In', 'active_potentials': [{'role': None, 'region': None, 'source': 'Agent-Lead', 'status': 'Not Contacted - Rapid Response Required', 'advisor': 'Unassigned', 'country': None, 'role_id': None, 'service': 'Registered Office Change - Company', 'advisor_id': 158, 'catalog_id': 140, 'service_id': 25, 'advisor_gid': 118383458, 'profile_url': '', 'customer_bid': 0, 'potential_id': 5068383, 'next_followup': '2025-09-19', 'advisor_status': 1, 'service_platform': 1}], 'converted_potentials': [], 'detached_primary_contact': {'mobile': 7305833329, 'country_code': 91}, 'spoc_info': [], 'linked_accounts': [], 'tags': [], 'tag_ids': [], 'gstin_info': []}}, 'validation_errors': ['Response missing: name', 'Response missing: email'], 'chain_context': {}, 'ok': False}]</pre>
+</body>
+</html>
